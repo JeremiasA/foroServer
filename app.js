@@ -7,6 +7,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 //routes import
+const usersRouter = require('./routes/users.routes')
 
 const app = express();
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //use router
+app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -31,7 +33,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.json({ error: err })
 });
 
 module.exports = app;

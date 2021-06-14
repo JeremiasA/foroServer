@@ -1,7 +1,7 @@
-const repo = require('../repositories/users.respository')
+const repo = require('../repositories/users.repository')
 
 module.exports = {
-    listUsers = async (req,res)=>{
+    listUsers : async (req,res)=>{
         try {
             const users = await repo.getUsers()
             return res.status(200).json(users)        
